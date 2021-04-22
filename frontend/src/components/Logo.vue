@@ -3,7 +3,7 @@
         class="font-logo w-full h-40 flex justify-center items-center cursor-pointer"
     >
         <img src="../assets/img/logo.svg" alt="logo icon" class="w-20 h-20" />
-        <div class="text-6xl mx-4 text-white">InstaUpload</div>
+        <div class="text-6xl mx-4 text-black">InstaUpload</div>
     </div>
 </template>
 
