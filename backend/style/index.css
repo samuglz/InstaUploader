@@ -1,0 +1,20 @@
+body{
+    background: linear-gradient(to bottom right,#e66465, #9198e5);
+}
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 10px;
+}
+img {
+    cursor: pointer;
+    width: 300px;
+    height: 200px;
+    box-shadow: 0 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
