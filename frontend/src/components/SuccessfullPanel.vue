@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-80 h-96 shadow-box rounded-md flex flex-col justify-evenly items-center"
+        class="w-80 h-96 shadow-box rounded-md flex flex-col justify-evenly items-center bg-white"
     >
         <div class="flex flex-col justify-center items-center">
             <img

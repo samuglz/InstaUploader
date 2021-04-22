@@ -1,6 +1,6 @@
 <template>
     <form
-        class="w-80 h-96 shadow-box rounded-md flex flex-col justify-around items-center"
+        class="w-80 h-96 shadow-box rounded-md flex flex-col justify-around items-center bg-white"
     >
         <h3 class="text-xl font-semibold text-gray-700">Upload your image</h3>
         <p class="text-xs font-semibold text-gray-500">

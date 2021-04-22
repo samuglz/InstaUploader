@@ -1,14 +1,20 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home';
+import Upload from '../views/Upload';
+import Gallery from '../views/Gallery';
 
 Vue.use(VueRouter);
 
 const routes = [
     {
-        path: '/',
-        name: 'Home',
-        component: Home
+        path: '/upload',
+        name: 'Upload',
+        component: Upload
+    },
+    {
+        path: '/gallery',
+        name: 'gallery',
+        component: Gallery
     }
 ];
 

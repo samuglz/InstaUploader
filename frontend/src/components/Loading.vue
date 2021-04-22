@@ -1,8 +1,9 @@
 <template>
     <div
-        class="w-80 flex flex-col justify-center items-center shadow-box py-2 px-4 rounded-md"
+        class="w-80 h-96 flex flex-col justify-center items-center shadow-box py-2 px-4 rounded-md bg-white"
     >
-        <span class="w-full text-left text-sm text-gray-700 font-semibold"
+        <span
+            class="w-full text-center text-sm text-gray-700 font-semibold my-4"
             >Uploading...</span
         >
         <div class="loader animate-spin w-8 h-8"></div>
