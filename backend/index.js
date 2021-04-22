@@ -10,17 +10,17 @@ const VALID_EXTENSIONS = ['png', 'jpeg', 'jpg'];
 const app = express();
 const PORT = process.env.PORT || 7000;
 
-// STATIC FILES CONFIG
-app.use('/images', express.static(__dirname + '/images'));
-// ENGINES CONFIG
-
-app.set('view engine', 'pug');
-
 // MIDDLEWARE CONFIG
 app.use(fileUpload());
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(cors());
+
+// STATIC FILES CONFIG
+app.use('/images', express.static(__dirname + '/images'));
+// ENGINES CONFIG
+
+app.set('view engine', 'pug');
 
 // GETS
 app.get('/', (req, res) => {
@@ -33,9 +33,10 @@ app.get('/images', (req, res) => {
         return { name: file.split('.')[0], url: `/images/${file}` };
     });
     files = files.filter(file => file.name !== 'logo');
-    res.render('index', {
-        images: files
-    });
+    res.status(200).json(files);
+    // res.render('index', {
+    //     images: files
+    // });
 });
 
 app.get('/images/:id', (req, res) => {

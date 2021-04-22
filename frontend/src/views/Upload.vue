@@ -1,15 +1,18 @@
 <template>
-    <div class="w-full flex justify-center items-center mt-20">
-        <ImageUploadForm
-            @uploadFile="uploadFile"
-            v-if="componentToLoad === 'uploadForm'"
-        />
-        <loading v-if="componentToLoad === 'loading'" />
-        <successfull-panel
-            :image-url="imageUrl"
-            :image-uri="imageUri"
-            v-if="componentToLoad === 'successfull'"
-        />
+    <div class="h-screen">
+        <logo />
+        <div class="w-full flex justify-center">
+            <ImageUploadForm
+                @uploadFile="uploadFile"
+                v-if="componentToLoad === 'uploadForm'"
+            />
+            <loading v-if="componentToLoad === 'loading'" />
+            <successfull-panel
+                :image-url="imageUrl"
+                :image-uri="imageUri"
+                v-if="componentToLoad === 'successfull'"
+            />
+        </div>
     </div>
 </template>
 
@@ -18,9 +21,11 @@ import ImageUploadForm from '@/components/ImageUploadForm';
 import Axios from 'axios';
 import Loading from '@/components/Loading';
 import SuccessfullPanel from '@/components/SuccessfullPanel';
+import Logo from '@/components/Logo';
 export default {
     name: 'Upload',
     components: {
+        Logo,
         SuccessfullPanel,
         Loading,
         ImageUploadForm

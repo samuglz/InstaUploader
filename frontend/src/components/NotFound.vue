@@ -1,8 +1,8 @@
 <template>
     <div
-        class="w-full flex flex-col justify-center items-center font-logo font-bold text-white"
+        class="w-full flex flex-col justify-center items-center font-notfound font-bold text-white"
     >
-        <div class="text-6xl">404</div>
+        <div class="text-9xl">404</div>
         <div class="text-6xl">This page doesn't exit</div>
     </div>
 </template>
@@ -18,7 +18,7 @@ export default {
     font-family: NotFound;
     src: url('../assets/fonts/RobotoMono.ttf');
 }
-.font-logo {
+.font-notfound {
     font-family: NotFound;
 }
 </style>

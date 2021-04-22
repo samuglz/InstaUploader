@@ -8,17 +8,17 @@ Vue.use(VueRouter);
 
 const routes = [
     {
+        path: '/',
+        name: 'gallery',
+        component: Gallery
+    },
+    {
         path: '/upload',
         name: 'Upload',
         component: Upload
     },
     {
-        path: '/gallery',
-        name: 'gallery',
-        component: Gallery
-    },
-    {
-        path: '/404',
+        path: '*',
         name: '404',
         component: NotFound
     }
