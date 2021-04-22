@@ -1,0 +1,11 @@
+html
+    head
+        title InstaUpload
+        style
+            include ../style/index.css
+    body
+        div(class="gallery")
+            each image in images
+                div(class="container")
+                    a(href=image.name)
+                        img(src=image.url alt="photo preview" class="img")

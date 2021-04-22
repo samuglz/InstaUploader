@@ -1,6 +1,10 @@
 <template>
-    <div class="w-80 flex flex-col justify-center items-center">
-        <span class="w-full text-left text-sm text-gray-700">Uploading...</span>
+    <div
+        class="w-80 flex flex-col justify-center items-center shadow-box py-2 px-4 rounded-md"
+    >
+        <span class="w-full text-left text-sm text-gray-700 font-semibold"
+            >Uploading...</span
+        >
         <div class="loader animate-spin w-8 h-8"></div>
     </div>
 </template>
