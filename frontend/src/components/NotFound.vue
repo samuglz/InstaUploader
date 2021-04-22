@@ -1,15 +1,20 @@
 <template>
-    <div
-        class="w-full flex flex-col justify-center items-center font-notfound font-bold text-white"
-    >
-        <div class="text-9xl">404</div>
-        <div class="text-6xl">This page doesn't exit</div>
+    <div class="h-screen">
+        <logo />
+        <div
+            class="w-full text-center flex flex-col justify-center items-center font-notfound font-bold text-black"
+        >
+            <div class="text-9xl">404</div>
+            <div class="text-6xl">This page doesn't exit</div>
+        </div>
     </div>
 </template>
 
 <script>
+import Logo from '@/components/Logo';
 export default {
-    name: '404'
+    name: 'Error404',
+    components: { Logo }
 };
 </script>
 
