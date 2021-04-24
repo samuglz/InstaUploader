@@ -20,9 +20,12 @@
         <div
             class="w-64 bg-gray-50 border-gray-300 border-solid border-2 rounded-md h-10 flex justify-end p-1 items-center"
         >
-            <span class="text-sm link w-1/2 flex-grow">{{ imageUrl }}</span>
+            <span class="text-sm link w-1/2 flex-grow" id="linkToCopy">{{
+                imageUrl
+            }}</span>
             <button
                 class="bg-blue-500 text-white text-xs font-semibold flex flex-nowrap focus:outline-none px-2 py-2 rounded-md hover:bg-blue-400"
+                @click="copyToClipboard"
             >
                 Copy Link
             </button>
@@ -41,6 +44,16 @@ export default {
         imageUri: {
             type: String,
             required: true
+        }
+    },
+    methods: {
+        copyToClipboard() {
+            const r = document.createRange();
+            r.selectNode(document.getElementById('linkToCopy'));
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(r);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
         }
     }
 };
