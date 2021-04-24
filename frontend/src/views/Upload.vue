@@ -1,7 +1,7 @@
 <template>
     <div class="h-screen">
         <logo />
-        <div class="w-full flex justify-center">
+        <div class="w-full flex justify-center flex-col items-center">
             <ImageUploadForm
                 @uploadFile="uploadFile"
                 v-if="componentToLoad === 'uploadForm'"
@@ -11,7 +11,9 @@
                 :image-url="imageUrl"
                 :image-uri="imageUri"
                 v-if="componentToLoad === 'successfull'"
+                @show-notification="handleNotification"
             />
+            <notificacions message="Copy to clipboard" type="success" />
         </div>
     </div>
 </template>
@@ -22,9 +24,11 @@ import Axios from 'axios';
 import Loading from '@/components/Loading';
 import SuccessfullPanel from '@/components/SuccessfullPanel';
 import Logo from '@/components/Logo';
+import Notificacions from '@/components/Notificacions';
 export default {
     name: 'Upload',
     components: {
+        Notificacions,
         Logo,
         SuccessfullPanel,
         Loading,
@@ -34,7 +38,8 @@ export default {
         return {
             componentToLoad: 'uploadForm',
             imageUrl: '',
-            imageUri: ''
+            imageUri: '',
+            showNotification: false
         };
     },
     methods: {
@@ -57,6 +62,9 @@ export default {
                     const message = err.response.data.message;
                     console.log(statusCode, message);
                 });
+        },
+        handleNotification() {
+            this.showNotification = true;
         }
     }
 };

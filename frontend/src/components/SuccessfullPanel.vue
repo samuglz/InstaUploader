@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import { event } from '@/events';
+
 export default {
     name: 'SuccessfullPanel',
     props: {
@@ -54,6 +56,7 @@ export default {
             window.getSelection().addRange(r);
             document.execCommand('copy');
             window.getSelection().removeAllRanges();
+            event.$emit('Show');
         }
     }
 };
