@@ -2,7 +2,7 @@
     <div class="">
         <logo />
         <div
-            class="gallery overflow-y-auto w-full flex items-center gap-5 px-10"
+            class="gallery overflow-y-auto w-full flex items-center gap-5 flex justify-center items-center"
         >
             <div v-for="file in files" :key="file.name" class="w-full py-2">
                 <img
