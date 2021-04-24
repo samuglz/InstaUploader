@@ -45,12 +45,12 @@ app.get('/images/:id', (req, res) => {
     const nameFiles = files.map(file => file.split('.')[0]);
     if (nameFiles.includes(id)) {
         const name = nameFiles.filter(name => name === id)[0];
-        const url = files.filter(file => file.split('.')[0] === id)[0];
-        res.render('image', {
-            image: { name, url }
-        });
+        const url = `http://localhost:7000/images/${
+            files.filter(file => file.split('.')[0] === id)[0]
+        }`;
+        res.status(200).json({ name, url });
     } else {
-        res.render('404');
+        res.status(404).json({ code: 404, message: 'Page not found' });
     }
 });
 

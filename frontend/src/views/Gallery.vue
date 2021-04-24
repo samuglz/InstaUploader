@@ -45,7 +45,8 @@ export default {
             return `http://localhost:7000${value.url}`;
         },
         goToImage(value) {
-            this.$router.push(`/image/${value}`);
+            // this.$router.push(`/image/${value}`);
+            this.$router.push({ name: 'Img', params: { id: value } });
         }
     }
 };

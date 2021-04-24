@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Upload from '@/views/Upload';
 import Gallery from '@/views/Gallery';
+import Img from '@/components/Img';
 import NotFound from '@/components/NotFound';
 
 Vue.use(VueRouter);
@@ -18,8 +19,12 @@ const routes = [
         component: Upload
     },
     {
+        path: '/images/:id',
+        name: 'Img',
+        component: Img
+    },
+    {
         path: '*',
-        name: '404',
         component: NotFound
     }
 ];

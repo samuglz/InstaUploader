@@ -2,10 +2,10 @@
     <div class="h-screen">
         <logo />
         <div
-            class="w-full text-center flex flex-col justify-center items-center font-notfound font-bold text-black"
+            class="w-full text-center flex flex-col justify-center items-center font-notfound font-bold text-black center-screen pb-40"
         >
-            <div class="text-9xl">404</div>
-            <div class="text-6xl">This page doesn't exit</div>
+            <div class="text-9xl my-5">404</div>
+            <div class="text-6xl my-5">This page doesn't exit</div>
         </div>
     </div>
 </template>
@@ -24,6 +24,9 @@ export default {
     src: url('../assets/fonts/RobotoMono.ttf');
 }
 .font-notfound {
-    font-family: NotFound;
+    font-family: NotFound, serif;
+}
+.center-screen {
+    height: calc(100% - 10rem);
 }
 </style>
