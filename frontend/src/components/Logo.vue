@@ -1,6 +1,7 @@
 <template>
     <div
         class="font-logo w-full h-40 flex justify-center items-center cursor-pointer"
+        @click="goToHomepage"
     >
         <img src="../assets/img/logo.svg" alt="logo icon" class="w-20 h-20" />
         <div class="text-6xl mx-4 text-black">InstaUpload</div>
@@ -9,7 +10,12 @@
 
 <script>
 export default {
-    name: 'Logo'
+    name: 'Logo',
+    methods: {
+        goToHomepage() {
+            if (this.$route.path !== '/') this.$router.push('/');
+        }
+    }
 };
 </script>
 
@@ -19,6 +25,6 @@ export default {
     src: url('../assets/fonts/Kaushan.ttf');
 }
 .font-logo {
-    font-family: logoFont;
+    font-family: logoFont, serif;
 }
 </style>

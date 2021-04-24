@@ -5,7 +5,12 @@
             class="flex justify-center items-center flex-col"
         >
             <logo />
-            <img :src="img.url" :alt="img.name" />
+            <img
+                :src="img.url"
+                :alt="img.name"
+                class="rounded-md"
+                :style="{ 'box-shadow': '0 0 10px 2px rgba(0,0,0,0.1)' }"
+            />
         </div>
         <div v-if="imgExist === 'false'">
             <NotFound />
@@ -24,7 +29,6 @@ export default {
         Axios.get(`http://localhost:7000/images/${this.$route.params.id}`)
             .then(({ data }) => {
                 this.img = { ...data };
-                console.log(this.img.url);
                 this.imgExist = 'true';
             })
             .catch(() => {

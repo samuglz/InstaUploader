@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Upload from '@/views/Upload';
 import Gallery from '@/views/Gallery';
-import Img from '@/components/Img';
+import Img from '@/views/Img';
 import NotFound from '@/components/NotFound';
 
 Vue.use(VueRouter);
