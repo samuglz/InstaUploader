@@ -83,7 +83,7 @@ app.post('/upload', (req, res) => {
                     code: 200,
                     message: 'OK',
                     uri: `http://localhost:7000/images/${uidNameFile}.${fileExtension}`,
-                    url: `http://localhost:7000/images/${uidNameFile}`
+                    url: `images/${uidNameFile}`
                 });
             }
         );
