@@ -47,7 +47,7 @@ export default {
             })
                 .then(({ data }) => {
                     setTimeout(() => {
-                        this.imageUrl = data.url;
+                        this.imageUrl = `http://localhost:8080/${data.url}`;
                         this.imageUri = data.uri;
                         this.componentToLoad = 'successfull';
                     }, 1000);
