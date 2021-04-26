@@ -13,7 +13,12 @@
                 v-if="componentToLoad === 'successfull'"
                 @show-notification="handleNotification"
             />
-            <notificacions message="Copy to clipboard" type="success" />
+            <notificacions
+                message="Copy to clipboard"
+                type="success"
+                id="success"
+            />
+            <notificacions type="fail" message="Invalid file" id="error" />
         </div>
     </div>
 </template>

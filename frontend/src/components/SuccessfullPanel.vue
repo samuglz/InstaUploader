@@ -56,7 +56,7 @@ export default {
             window.getSelection().addRange(r);
             document.execCommand('copy');
             window.getSelection().removeAllRanges();
-            event.$emit('Show');
+            event.$emit('Show', 'success');
         }
     }
 };

@@ -41,11 +41,15 @@ export default {
         type: {
             type: String,
             default: 'Success'
+        },
+        id: {
+            type: String,
+            required: true
         }
     },
     created() {
-        event.$on('Show', () => {
-            this.enableNotification();
+        event.$on('Show', id => {
+            if (id === this.id) this.enableNotification();
         });
     },
     data() {

@@ -6,9 +6,7 @@
         <p class="text-xs font-semibold text-gray-500">
             File should be Jpeg, Png,...
         </p>
-        <div class="w-56 h-40 border-blue-200 border border-solid rounded-md">
-            drag and drop
-        </div>
+        <drag-drop @getFile="handleDragDrop" />
         <span class="text-gray-400 text-sm font-semibold">Or</span>
         <button
             type="button"
@@ -28,8 +26,11 @@
 </template>
 
 <script>
+import DragDrop from '@/components/DragDrop';
+import { event } from '@/events';
 export default {
     name: 'ImageUploadForm',
+    components: { DragDrop },
     data() {
         return {
             file: new FormData()
@@ -43,6 +44,21 @@ export default {
         },
         handleSubmit() {
             this.$refs.fileinput.click();
+        },
+        handleDragDrop(file) {
+            const VALID_EXTENSIONS = ['png', 'jpeg', 'jpg'];
+            console.log(file.name.split('.')[file.name.split('.').length - 1]);
+            if (
+                VALID_EXTENSIONS.includes(
+                    file.name.split('.')[file.name.split('.').length - 1]
+                )
+            ) {
+                this.file = new FormData();
+                this.file.append('userFile', file);
+                this.$emit('uploadFile', this.file);
+            } else {
+                event.$emit('Show', 'error');
+            }
         }
     }
 };
