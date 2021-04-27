@@ -20,8 +20,6 @@ app.use(cors());
 app.use('/images', express.static(__dirname + '/images'));
 // ENGINES CONFIG
 
-app.set('view engine', 'pug');
-
 // GETS
 app.get('/', (req, res) => {
     res.redirect('/images');
