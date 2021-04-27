@@ -4,11 +4,11 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const uuid = require('uuid');
 const fs = require('fs');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const VALID_EXTENSIONS = ['png', 'jpeg', 'jpg'];
-
 const app = express();
-const PORT = process.env.PORT || 7000;
 
 // MIDDLEWARE CONFIG
 app.use(fileUpload());
@@ -43,7 +43,7 @@ app.get('/images/:id', (req, res) => {
     const nameFiles = files.map(file => file.split('.')[0]);
     if (nameFiles.includes(id)) {
         const name = nameFiles.filter(name => name === id)[0];
-        const url = `http://localhost:7000/images/${
+        const url = `${process.env.HOST}/images/${
             files.filter(file => file.split('.')[0] === id)[0]
         }`;
         res.status(200).json({ name, url });
@@ -80,7 +80,7 @@ app.post('/upload', (req, res) => {
                 res.status(200).json({
                     code: 200,
                     message: 'OK',
-                    uri: `http://localhost:7000/images/${uidNameFile}.${fileExtension}`,
+                    uri: `${process.env.HOST}/images/${uidNameFile}.${fileExtension}`,
                     url: `images/${uidNameFile}`
                 });
             }
@@ -88,6 +88,6 @@ app.post('/upload', (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${process.env.PORT}`);
 });
