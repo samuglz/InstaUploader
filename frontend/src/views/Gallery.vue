@@ -27,7 +27,7 @@ export default {
     name: 'Gallery',
     components: { Logo },
     created() {
-        Axios.get('http://localhost:7000/images')
+        Axios.get(`${process.env.VUE_APP_API}`)
             .then(res => {
                 this.files = res.data;
             })
@@ -42,7 +42,7 @@ export default {
     },
     methods: {
         getUrl(value) {
-            return `http://localhost:7000${value.url}`;
+            return `${process.env.VUE_APP_API}${value.url}`;
         },
         goToImage(value) {
             // this.$router.push(`/image/${value}`);

@@ -50,14 +50,14 @@ export default {
     methods: {
         uploadFile(file) {
             this.componentToLoad = 'loading';
-            Axios.post('http://localhost:7000/upload', file, {
+            Axios.post(`${process.env.VUE_APP_API}/upload`, file, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
                 .then(({ data }) => {
                     setTimeout(() => {
-                        this.imageUrl = `http://localhost:8080/${data.url}`;
+                        this.imageUrl = `${process.env.VUE_APP_HOST}/${data.url}`;
                         this.imageUri = data.uri;
                         this.componentToLoad = 'successfull';
                     }, 1000);

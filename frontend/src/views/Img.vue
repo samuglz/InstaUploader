@@ -26,7 +26,7 @@ export default {
     name: 'Img',
     components: { Logo, NotFound },
     created() {
-        Axios.get(`http://localhost:7000/images/${this.$route.params.id}`)
+        Axios.get(`${process.env.VUE_APP_API}/images/${this.$route.params.id}`)
             .then(({ data }) => {
                 this.img = { ...data };
                 this.imgExist = 'true';
