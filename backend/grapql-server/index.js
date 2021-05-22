@@ -10,6 +10,10 @@ const typeDefs = gql`
     }
     type Query {
         images: [Image]
+        image(id: String!): Image
+    }
+    type Mutation {
+        uploadImage(file: Upload!): Image
     }
 `;
 
@@ -17,6 +21,28 @@ const resolvers = {
     Query: {
         images: async () => {
             const { data } = await Axios.get(`${process.env.REST_HOST}/images`);
+            return data;
+        },
+        image: async (root, args) => {
+            const { id } = args;
+            const { data } = await Axios.get(
+                `${process.env.REST_HOST}/images/${id}`
+            );
+            return data;
+        }
+    },
+    Mutation: {
+        uploadImage: async (root, args) => {
+            const { file } = args;
+            const { data } = await Axios.post(
+                `${process.env.REST_HOST}/upload`,
+                file,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }
+            );
             return data;
         }
     }

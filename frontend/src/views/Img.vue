@@ -1,9 +1,6 @@
 <template>
     <div class="h-screen">
-        <div
-            v-if="imgExist === 'true'"
-            class="flex justify-center items-center flex-col"
-        >
+        <div class="flex justify-center items-center flex-col" v-if="imgExist">
             <logo />
             <img
                 :src="img.url"
@@ -12,36 +9,50 @@
                 :style="{ 'box-shadow': '0 0 10px 2px rgba(0,0,0,0.1)' }"
             />
         </div>
-        <div v-if="imgExist === 'false'">
+        <div v-if="!imgExist">
             <NotFound />
         </div>
     </div>
 </template>
 
 <script>
-import Axios from 'axios';
 import Logo from '@/components/Logo';
 import NotFound from '@/components/NotFound';
+import gql from 'graphql-tag';
 export default {
     name: 'Img',
     components: { Logo, NotFound },
-    created() {
-        Axios.get(`${process.env.VUE_APP_API}/images/${this.$route.params.id}`)
-            .then(({ data }) => {
-                this.img = { ...data };
-                this.imgExist = 'true';
-            })
-            .catch(() => {
-                this.imgExist = 'false';
-            });
+    apollo: {
+        img: {
+            query: gql`
+                query getimg($id: String!) {
+                    image(id: $id) {
+                        name
+                        url
+                    }
+                }
+            `,
+            variables() {
+                return {
+                    id: `${this.$route.params.id}`
+                };
+            },
+            update: data => data.image,
+            error() {
+                this.imgExist = false;
+            }
+        }
     },
     data() {
         return {
-            imgExist: '',
+            imgExist: true,
             img: {}
         };
+    },
+    watch: {
+        img() {
+            console.log(this.img);
+        }
     }
 };
 </script>
-
-<style scoped></style>

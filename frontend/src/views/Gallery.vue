@@ -2,7 +2,7 @@
     <div class="">
         <logo />
         <div
-            class="gallery overflow-y-auto w-full flex items-center gap-5 flex justify-center items-center"
+            class="gallery overflow-y-auto w-full flex items-center gap-5 justify-center"
         >
             <div v-for="file in files" :key="file.name" class="w-full py-2">
                 <img
@@ -21,19 +21,24 @@
 </template>
 
 <script>
-import Axios from 'axios';
 import Logo from '@/components/Logo';
+import gql from 'graphql-tag';
+
 export default {
     name: 'Gallery',
     components: { Logo },
-    created() {
-        Axios.get(`${process.env.VUE_APP_API}`)
-            .then(res => {
-                this.files = res.data;
-            })
-            .catch(err => {
-                console.log(err);
-            });
+    apollo: {
+        files: {
+            query: gql`
+                query {
+                    images {
+                        name
+                        url
+                    }
+                }
+            `,
+            update: data => data.images
+        }
     },
     data() {
         return {
@@ -45,7 +50,7 @@ export default {
             return `${process.env.VUE_APP_API}${value.url}`;
         },
         goToImage(value) {
-            // this.$router.push(`/image/${value}`);
+            this.$router.push(`/image/${value}`);
             this.$router.push({ name: 'Img', params: { id: value } });
         }
     }
