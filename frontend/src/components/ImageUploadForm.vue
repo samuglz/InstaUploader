@@ -40,6 +40,9 @@ export default {
         getFile(e) {
             this.file = new FormData();
             this.file.append('userFile', e.target.files[0]);
+            // const file = new FormData();
+            // file.append('userFile', e.target.files[0]);
+            // console.log('type', typeof e.target.files[0]);
             this.$emit('uploadFile', this.file);
         },
         handleSubmit() {

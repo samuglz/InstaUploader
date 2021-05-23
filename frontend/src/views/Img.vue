@@ -48,11 +48,6 @@ export default {
             imgExist: true,
             img: {}
         };
-    },
-    watch: {
-        img() {
-            console.log(this.img);
-        }
     }
 };
 </script>
