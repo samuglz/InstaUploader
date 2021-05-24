@@ -54,9 +54,9 @@ export default {
             this.componentToLoad = 'loading';
             // this.$apollo.mutate({
             //     mutation: gql`
-            //         mutation upload($file: Upload!) {
+            //         mutation upload($file: String!) {
             //             uploadImage(file: $file) {
-            //                 name
+            //                 uri
             //                 url
             //             }
             //         }
