@@ -8,12 +8,18 @@ const typeDefs = gql`
         name: String
         url: String
     }
+    type Uploaded {
+        code: Int
+        message: String
+        uri: String
+        url: String
+    }
     type Query {
         images: [Image]
         image(id: String!): Image
     }
     type Mutation {
-        uploadImage(file: Upload!): Image
+        uploadImage(file: String!): Uploaded
     }
 `;
 
@@ -51,6 +57,6 @@ const resolvers = {
 const server = new ApolloServer({ typeDefs, resolvers });
 
 // The `listen` method launches a web server.
-server.listen().then(({ url }) => {
+server.listen({ port: 4001 }).then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
 });
