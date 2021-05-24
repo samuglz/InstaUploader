@@ -14,7 +14,7 @@ Vue.use(VueApollo);
 
 const apolloClient = new ApolloClient({
     link: createUploadLink({
-        uri: 'http://localhost:4000'
+        uri: 'http://localhost:4001'
     }),
     cache: new InMemoryCache()
 });
